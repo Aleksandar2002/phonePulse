@@ -1,0 +1,8 @@
+@if (phone) {
+<phone-pulse-generic-form
+  [fields]="formFields"
+  [title]="'Edit form'"
+  (formSubmitEmitter)="update($event)"
+></phone-pulse-generic-form>
+
+}

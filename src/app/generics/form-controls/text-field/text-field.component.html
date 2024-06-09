@@ -1,0 +1,23 @@
+<div class="form-field">
+  <input
+    #input
+    [type]="field.tagType"
+    [name]="field.name"
+    [id]="field.id"
+    (focus)="moveLabelUp()"
+    (blur)="moveLabelDown()"
+    [formControl]="control"
+  />
+  <label #label [for]="field.id">{{ field.label }}</label>
+</div>
+<div class="text-field-error" *ngIf="control.touched && control.invalid">
+  <p *ngIf="control.hasError('required')">Field is required</p>
+  <p *ngIf="control.hasError('pattern')">Wrong format</p>
+  @if (field.customValidationMessages && field.customValidationMessages.length)
+  { @for (customMessageObject of field.customValidationMessages; track
+  customMessageObject) {
+  <p *ngIf="control.hasError(customMessageObject.validationName)">
+    {{ customMessageObject.message }}
+  </p>
+  } }
+</div>

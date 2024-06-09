@@ -1,0 +1,14 @@
+<article>
+  <img
+    class="image-fluid"
+    [src]="getPhoneImagePath(phone.image)"
+    [alt]="phone.name"
+    (click)="emitNavigationToPhoneDetails()"
+  />
+  <h2>{{ phone.name }}</h2>
+  <h3 (click)="emitNavigationToPhoneDetails()">${{ phone.price }}</h3>
+  <phone-pulse-add-to-cart-button
+    [phoneId]="phone.id"
+  ></phone-pulse-add-to-cart-button>
+  <phone-pulse-discount [discount]="phone.discount"></phone-pulse-discount>
+</article>

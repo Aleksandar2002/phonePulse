@@ -1,0 +1,15 @@
+@if (title && text && image) {
+<div class="banner">
+  <div
+    class="image"
+    [ngStyle]="{ 'background-image': 'url(' + image + ')' }"
+  ></div>
+  <div class="layer"></div>
+  <div class="content">
+    <h2>{{ title }}</h2>
+    <hr class="line" />
+    <h4>{{ text }}</h4>
+  </div>
+</div>
+
+}

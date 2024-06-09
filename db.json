@@ -1,14 +1,17 @@
 {
-  "phones":[
+  "phones": [
     {
       "model": "70",
       "image": "honor_70",
-      "price": 500,
-      "discaunt": 20,
-      "manufacturer": "Honor",
+      "price": "500",
+      "discount": 20,
+      "manufacturer": {
+        "name": "Honor",
+        "country": "China"
+      },
       "specification": {
         "RAM": "8GB",
-        "Batery": "5000mAh",
+        "Battery": "5000mAh",
         "Screen": "6.4\"",
         "Camera": "60MP"
       },
@@ -19,11 +22,14 @@
       "model": "Note 12",
       "image": "redmi_note12",
       "price": 200,
-      "discaunt": 0,
-      "manufacturer": "Xiaomi Redmi",
+      "discount": 0,
+      "manufacturer": {
+        "name": "Xiaomi",
+        "country": "China"
+      },
       "specification": {
         "RAM": "6GB",
-        "Batery": "4500mAh",
+        "Battery": "4500mAh",
         "Screen": "6.8\"",
         "Camera": "54MP"
       },
@@ -34,11 +40,14 @@
       "model": "G11",
       "image": "nokia_g11",
       "price": 230,
-      "discaunt": 0,
-      "manufacturer": "Nokia",
+      "discount": 0,
+      "manufacturer": {
+        "name": "Nokia",
+        "country": "Finland"
+      },
       "specification": {
         "RAM": "6GB",
-        "Batery": "4800mAh",
+        "Battery": "4800mAh",
         "Screen": "6.5\"",
         "Camera": "40MP"
       },
@@ -49,11 +58,14 @@
       "model": "X6",
       "image": "honor_x6",
       "price": 250,
-      "discaunt": 0,
-      "manufacturer": "Honor",
+      "discount": 0,
+      "manufacturer": {
+        "name": "Honor",
+        "country": "China"
+      },
       "specification": {
         "RAM": "6GB",
-        "Batery": "4700mAh",
+        "Battery": "4700mAh",
         "Screen": "6.6\"",
         "Camera": "70MP"
       },
@@ -64,11 +76,14 @@
       "model": "X80",
       "image": "vivo_x80",
       "price": 300,
-      "discaunt": 5,
-      "manufacturer": "Vivo",
+      "discount": 5,
+      "manufacturer": {
+        "name": "Vivo",
+        "country": "China"
+      },
       "specification": {
         "RAM": "8GB",
-        "Batery": "4000mAh",
+        "Battery": "4000mAh",
         "Screen": "6.3\"",
         "Camera": "40MP"
       },
@@ -76,29 +91,17 @@
       "id": "9"
     },
     {
-      "model": "X8A",
-      "image": "honor_x8a",
-      "price": 400,
-      "discaunt": 10,
-      "manufacturer": "Honor",
-      "specification": {
-        "RAM": "12GB",
-        "Batery": "5500mAh",
-        "Screen": "6.6\"",
-        "Camera": "80MP"
-      },
-      "name": "Honor X8A",
-      "id": "10"
-    },
-    {
       "model": "S22",
       "image": "samsung_s22",
       "price": 900,
-      "discaunt": 0,
-      "manufacturer": "Samsung",
+      "discount": 0,
+      "manufacturer": {
+        "name": "Samsung",
+        "country": "South Korea"
+      },
       "specification": {
         "RAM": "12GB",
-        "Batery": "4500mAh",
+        "Battery": "4500mAh",
         "Screen": "6.6\"",
         "Camera": "55MP"
       },
@@ -109,11 +112,14 @@
       "model": "GT 2",
       "image": "realme_gt2",
       "price": 230,
-      "discaunt": 0,
-      "manufacturer": "Realme",
+      "discount": 0,
+      "manufacturer": {
+        "name": "Realme",
+        "country": "China"
+      },
       "specification": {
         "RAM": "6GB",
-        "Batery": "5500mAh",
+        "Battery": "5500mAh",
         "Screen": "6.4\"",
         "Camera": "40MP"
       },
@@ -121,14 +127,35 @@
       "id": "12"
     },
     {
+      "model": "X8A",
+      "image": "honor_x8a",
+      "price": 400,
+      "discount": 10,
+      "manufacturer": {
+        "name": "Honor",
+        "country": "China"
+      },
+      "specification": {
+        "RAM": "12GB",
+        "Battery": "5500mAh",
+        "Screen": "6.6\"",
+        "Camera": "80MP"
+      },
+      "name": "Honor X8A",
+      "id": "10"
+    },
+    {
       "model": "Nova Y61",
       "image": "huavei_novaY61",
       "price": 400,
-      "discaunt": 0,
-      "manufacturer": "Huawei",
+      "discount": 0,
+      "manufacturer": {
+        "name": "Huawei",
+        "country": "China"
+      },
       "specification": {
         "RAM": "6GB",
-        "Batery": "4500mAh",
+        "Battery": "4500mAh",
         "Screen": "6.5\"",
         "Camera": "52MP"
       },
@@ -139,11 +166,14 @@
       "model": "Mate 50",
       "image": "hua_mate50",
       "price": 600,
-      "discaunt": 8,
-      "manufacturer": "Huawei",
+      "discount": 8,
+      "manufacturer": {
+        "name": "Huawei",
+        "country": "China"
+      },
       "specification": {
         "RAM": "12GB",
-        "Batery": "4500mAh",
+        "Battery": "4500mAh",
         "Screen": "6.7\"",
         "Camera": "64MP"
       },
@@ -154,11 +184,14 @@
       "model": "Iphone 14",
       "image": "iphone_14",
       "price": 1000,
-      "discaunt": 8,
-      "manufacturer": "Apple",
+      "discount": 8,
+      "manufacturer": {
+        "name": "Apple",
+        "country": "USA"
+      },
       "specification": {
         "RAM": "12GB",
-        "Batery": "5500mAh",
+        "Battery": "5500mAh",
         "Screen": "6.5\"",
         "Camera": "80MP"
       },
@@ -166,29 +199,17 @@
       "id": "15"
     },
     {
-      "model": "A23",
-      "image": "samsung_a23",
-      "price": 900,
-      "discaunt": 25,
-      "manufacturer": "Samsung",
-      "specification": {
-        "RAM": "8GB",
-        "Batery": "5500mAh",
-        "Screen": "6.6\"",
-        "Camera": "54MP"
-      },
-      "name": "Samsung A23",
-      "id": "16"
-    },
-    {
       "model": "Y33S",
       "image": "vivo_y33s",
       "price": 300,
-      "discaunt": 5,
-      "manufacturer": "Vivo",
+      "discount": 5,
+      "manufacturer": {
+        "name": "Vivo",
+        "country": "China"
+      },
       "specification": {
         "RAM": "6GB",
-        "Batery": "4500mAh",
+        "Battery": "4500mAh",
         "Screen": "6.5\"",
         "Camera": "55MP"
       },
@@ -196,29 +217,17 @@
       "id": "17"
     },
     {
-      "model": "A54",
-      "image": "samsungA54",
-      "price": 650,
-      "discaunt": 10,
-      "manufacturer": "Samsung",
-      "specification": {
-        "RAM": "8GB",
-        "Batery": "5500mAh",
-        "Screen": "6.5\"",
-        "Camera": "74MP"
-      },
-      "name": "Samsung A54",
-      "id": "18"
-    },
-    {
       "model": "Iphone 14 yellow",
       "image": "iphone_14_yellow",
       "price": 1100,
-      "discaunt": 0,
-      "manufacturer": "Apple",
+      "discount": 0,
+      "manufacturer": {
+        "name": "Apple",
+        "country": "USA"
+      },
       "specification": {
         "RAM": "12GB",
-        "Batery": "5500mAh",
+        "Battery": "5500mAh",
         "Screen": "6.5\"",
         "Camera": "80MP"
       },
@@ -226,29 +235,35 @@
       "id": "19"
     },
     {
-      "model": "Note 12 white",
-      "image": "redmi_note12_white",
-      "price": 700,
-      "discaunt": 0,
-      "manufacturer": "Xiaomi Redmi",
+      "model": "90",
+      "image": "honor90",
+      "price": 800,
+      "discount": 0,
+      "manufacturer": {
+        "name": "Honor",
+        "country": "China"
+      },
       "specification": {
         "RAM": "12GB",
-        "Batery": "4700mAh",
+        "Battery": "4700mAh",
         "Screen": "6.7\"",
         "Camera": "68MP"
       },
-      "name": "Redmi Note 12 white",
+      "name": "Honor 90",
       "id": "20"
     },
     {
       "model": "X7A",
       "image": "honor_x7a",
       "price": 750,
-      "discaunt": 0,
-      "manufacturer": "Honor",
+      "discount": 0,
+      "manufacturer": {
+        "name": "Honor",
+        "country": "China"
+      },
       "specification": {
         "RAM": "16GB",
-        "Batery": "5000mAh",
+        "Battery": "5000mAh",
         "Screen": "6.5\"",
         "Camera": "78MP"
       },
@@ -256,34 +271,108 @@
       "id": "21"
     },
     {
-      "model": "Galaxy S23",
-      "image": "samsung_galaxyS23",
-      "price": 720,
-      "discaunt": 20,
-      "manufacturer": "Samsung",
+      "model": "Edge 40",
+      "image": "motorolaEdge40",
+      "price": 520,
+      "discount": 20,
+      "manufacturer": {
+        "name": "Motorola",
+        "country": "South Korea"
+      },
       "specification": {
         "RAM": "8GB",
-        "Batery": "4700mAh",
+        "Battery": "4700mAh",
         "Screen": "6.7\"",
         "Camera": "60MP"
       },
-      "name": "Samsung Galaxy S23",
+      "name": "Motorola Edge 40",
       "id": "22"
     },
     {
-      "model": "Y7023",
-      "image": "vivo_y7032",
-      "price": 32032,
-      "discaunt": 32,
-      "manufacturer": "Vivo123",
-      "specification": {
-        "RAM": "8GB32",
-        "Batery": "5200mAh",
-        "Screen": "6.5\"",
-        "Camera": "52MP"
+      "model": "S24 ultra",
+      "image": "samsungS24ultra",
+      "price": 1200,
+      "discount": 10,
+      "manufacturer": {
+        "name": "Samsung",
+        "country": "South Korea"
       },
-      "name": "Vivo123 Y7023",
+      "specification": {
+        "RAM": "16GB",
+        "Battery": "5500mAh",
+        "Screen": "6.5\"",
+        "Camera": "128MP"
+      },
+      "name": "Samsung S24 Ultra",
       "id": "24"
+    },
+    {
+      "model": "S24",
+      "image": "samsungS24",
+      "price": 1000,
+      "discount": 10,
+      "manufacturer": {
+        "name": "Samsung",
+        "country": "South Korea"
+      },
+      "specification": {
+        "RAM": "16GB",
+        "Battery": "5500mAh",
+        "Screen": "6.5\"",
+        "Camera": "128MP"
+      },
+      "name": "Samsung S24",
+      "id": "18"
+    }
+  ],
+  "users": [
+    {
+      "id": "0",
+      "username": "admin123",
+      "email": "admin@gmail.com",
+      "password": "admin123A",
+      "role": "admin",
+      "cart": []
+    },
+    {
+      "id": "a972",
+      "username": "aleksandar",
+      "email": "aleksandar@gmail.com",
+      "password": "15102002aA",
+      "role": "user",
+      "cart": [],
+      "orders": [
+        {
+          "orderDate": "6/6/2024, 2:51:11 PM",
+          "items": [
+            {
+              "quantity": 1,
+              "phoneId": "6"
+            },
+            {
+              "quantity": 1,
+              "phoneId": "7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7a8d",
+      "username": "user123",
+      "email": "user@gmail.com",
+      "password": "user123U",
+      "role": "user",
+      "cart": [
+        {
+          "phoneId": "6",
+          "quantity": 15
+        },
+        {
+          "phoneId": "9",
+          "quantity": 5
+        }
+      ]
     }
   ]
 }

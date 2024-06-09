@@ -1,1 +1,32 @@
-<p>phones works!</p>
+<div class="phones wrapper">
+  <div class="header">
+    <h1>Phones</h1>
+    <select
+      #sort
+      name="ddlSort"
+      id="ddlSort"
+      (change)="changeIPhoneQueryParams({ sortType: sort.value })"
+    >
+      <option value="0">Choose sorting type</option>
+      <option value="name_asc_string">Name ascending</option>
+      <option value="name_desc_string">Name descending</option>
+      <option value="price_asc_number">Price ascending</option>
+      <option value="price_desc_number">Price descending</option>
+    </select>
+    <phone-pulse-search
+      (searchTextEmitter)="changeIPhoneQueryParams($event)"
+    ></phone-pulse-search>
+  </div>
+  @if (phones && phones.length) {
+  <section>
+    <phone-pulse-phone
+      *ngFor="let phone of phones; index as ind"
+      [phone]="phone"
+      (navigateToPhoneDetails)="navigateToPhoneDetails($event)"
+    >
+    </phone-pulse-phone>
+  </section>
+  }@else {
+  <h3 class="my-5 py-5 text-center">There is no products available</h3>
+  }
+</div>

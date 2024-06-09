@@ -1,1 +1,24 @@
-<phone-pulse-navigation></phone-pulse-navigation>
+<header>
+  <div class="wrapper row">
+    <div class="col col-6 logo">
+      <a [routerLink]="'/'">
+        <img [src]="'assets/images/logo.ico'" alt="Logo" />
+      </a>
+    </div>
+    <div class="col col-6">
+      <phone-pulse-navigation>
+        @if (!loggedUser) {
+        <li><a [routerLink]="'/login'">Login</a></li>
+        <li><a [routerLink]="'/register'">Register</a></li>
+        } @else { @if (loggedUser.role == 'admin') {
+        <li><a [routerLink]="'/admin-page'">Admin page</a></li>
+        } @if (loggedUser.role == 'user') {
+        <li><a [routerLink]="'/cart'">Cart</a></li>
+        }
+
+        <li><button (click)="logoutEvent()">Logout</button></li>
+        }
+      </phone-pulse-navigation>
+    </div>
+  </div>
+</header>

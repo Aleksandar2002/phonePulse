@@ -1,0 +1,60 @@
+@if (data && data.length) {
+<div class="table-div generic-table-div wrapper">
+  <h1 class="text-center">{{ title }}</h1>
+  <hr class="line" />
+  <div class="content">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          @for (col of cols; track col) {
+          <th>{{ col }}</th>
+          }
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of data; track item; let i = $index) {
+
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <ng-container *ngFor="let key of colsOrder">
+            <ng-container *ngIf="key !== 'id'">
+              <td *ngIf="key === 'image'">
+                <img
+                  [src]="getImagePath(showItemOfKeyValue(item, key))"
+                  alt=""
+                />
+              </td>
+              <td *ngIf="key !== 'image'">
+                {{ showItemOfKeyValue(item, key) }}
+              </td>
+            </ng-container>
+          </ng-container>
+          <td>
+            <a [routerLink]="'edit/' + item.id">
+              <button class="basic bordered">Edit</button>
+            </a>
+          </td>
+          <td>
+            <button class="basic bordered" (click)="handleDelete(item.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+        <tr>
+          <td [attr.colspan]="4">
+            <a [routerLink]="'create'">
+              <button class="w-50 basic bordered">Add row</button>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+}@else {
+<h2 class="text-center my-5 py-5">There is no data</h2>
+}

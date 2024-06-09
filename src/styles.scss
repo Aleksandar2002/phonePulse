@@ -1,1 +1,645 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+
+$black: #212d40;
+$white: #ecf5f5;
+// $light-blue: #20a4f3;
+$light-blue: #1a9bce;
+$blue: #364156;
+$red: rgb(187, 12, 50);
+$green: rgb(42, 131, 20);
+
+@mixin flexbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+@mixin flexcol {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+@mixin transition($duration) {
+  transition: $duration ease-in-out;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $blue;
+  color: $white;
+  min-height: 100%;
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+  input,
+  select,
+  button {
+    border: none;
+    outline: none;
+    background-color: $white;
+  }
+  button.basic {
+    background-color: $white;
+    color: $black;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 5px;
+    @include transition(0.3s);
+    &.bordered {
+      // border: 1px solid $black;
+      box-shadow: 0 0 2px $blue;
+    }
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+  }
+  select {
+    padding: 5px 8px;
+    border-radius: 3px;
+    font-size: 1rem;
+    color: $black;
+  }
+  .line {
+    background-color: $white;
+    height: 2px;
+    margin: 20px 0;
+    opacity: 1;
+    width: 40%;
+  }
+
+  .wrapper {
+    @include flexbox();
+    width: 70%;
+    margin: 0 auto;
+  }
+  ::placeholder {
+    color: $white;
+    opacity: 0.8;
+  }
+  header {
+    background-color: $black;
+    padding: 50px 0;
+    img {
+      width: 50px;
+    }
+    nav {
+      @include flexbox();
+      justify-content: center;
+      ul {
+        @include flexbox();
+        li {
+          margin: 0 10px;
+          a {
+            font-size: 1.2rem;
+            @include transition(0.3s);
+          }
+          button {
+            font-size: 1.2rem;
+            background-color: transparent;
+            color: $white;
+            padding: 5px 6px;
+            &:hover {
+              @include transition(0.3s);
+              color: $light-blue;
+            }
+          }
+          a:hover {
+            color: $light-blue;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    .discount {
+      width: 75px;
+      height: 75px;
+      padding: 5px;
+      @include flexbox();
+      justify-content: center;
+      border-radius: 50%;
+      background-color: $white;
+      border: 2px solid $light-blue;
+      color: $blue;
+      position: absolute;
+      h4,
+      p {
+        margin: 0;
+      }
+    }
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 800px;
+      @include flexbox();
+      .layer,
+      .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      .image {
+        z-index: 4;
+        // background-image: url("assets/images/banner3.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .layer {
+        z-index: 5;
+        background-color: rgba(26, 155, 206, 0.8);
+        background-color: rgba(54, 65, 86, 0.8);
+        background-color: rgba(33, 45, 64, 0.6);
+      }
+      .content {
+        position: absolute;
+        z-index: 100;
+        background-color: rgba(26, 155, 206, 0.2);
+        background-color: rgba(236, 245, 245, 0.1);
+        background-color: rgba(54, 65, 86, 0.1);
+        background-color: rgba(33, 45, 64, 0.1);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 0 10px $white;
+        left: 20%;
+        bottom: 20%;
+        padding: 40px;
+        border-radius: 8px;
+        h2 {
+          font-size: 3.2rem;
+          color: $light-blue;
+        }
+        hr.line {
+          // color: $light-blue;
+          border: none;
+          width: 60%;
+          background-color: $white;
+          height: 3px;
+        }
+        h4 {
+          max-width: 600px;
+          font-size: 2.2rem;
+        }
+      }
+    }
+
+    .home {
+      .our-services {
+        background-color: $black;
+        @include flexcol();
+        justify-content: center;
+        padding: 100px 0 150px 0;
+        h1 {
+          font-size: 3rem;
+        }
+        hr.line {
+          margin-bottom: 70px;
+          width: 20%;
+          height: 3px;
+        }
+        .row {
+          @include grid();
+          grid-template-columns: 1fr 1fr 1fr;
+          .service {
+            background-color: $light-blue;
+            padding: 30px 20px;
+            @include flexcol();
+            border-radius: 10px;
+            .icon {
+              width: 75px;
+              font-size: 2.5rem;
+              height: 75px;
+              border-radius: 50%;
+              background-color: $black;
+              color: $white;
+              @include flexbox();
+              justify-content: center;
+              margin-bottom: 30px;
+            }
+            h2 {
+              margin-bottom: 30px;
+            }
+            p {
+              font-size: 1.1rem;
+              line-height: 1.5rem;
+            }
+          }
+        }
+      }
+      .records {
+        width: 100%;
+        background-color: $light-blue;
+        padding: 50px;
+        .row {
+          @include grid();
+          grid-template-columns: 1fr 1fr 1fr;
+          .record {
+            @include flexbox();
+            justify-content: center;
+            &.margin-right-border {
+              border-right: 1px solid $white;
+            }
+            .icon {
+              font-size: 2.8rem;
+              color: $white;
+              @include flexbox();
+              justify-content: center;
+              margin-right: 40px;
+            }
+            h4 {
+              text-align: center;
+              font-size: 2rem;
+              margin-bottom: 10px;
+            }
+            h5 {
+              text-align: center;
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+
+    .phones {
+      @include flexcol();
+      .header {
+        width: 100%;
+        @include flexbox();
+        h1 {
+          margin: 60px;
+          font-size: 3rem;
+        }
+        .search-div {
+          input {
+            padding: 6px 12px;
+            background-color: $light-blue;
+            color: $white;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            @include transition(0.3s);
+            &:focus {
+              background-color: $black;
+            }
+          }
+        }
+      }
+      section {
+        margin: 50px 0;
+        width: 100%;
+        @include grid();
+        align-items: stretch;
+        article {
+          position: relative;
+          @include flexcol();
+          border-radius: 3px;
+          background-color: $light-blue;
+          color: $white;
+          padding: 15px 10px;
+          @include transition(0.3s);
+          border: solid 3px $light-blue;
+          box-shadow: 0 0 7px $light-blue;
+          .discount {
+            left: -5%;
+            top: -5%;
+          }
+          button {
+          }
+          &:hover {
+            background-color: $white;
+            color: $light-blue;
+          }
+          img {
+            margin-bottom: 20px;
+            width: 90%;
+            height: 350px;
+            cursor: pointer;
+          }
+          h2 {
+            cursor: pointer;
+          }
+          h3 {
+            color: $blue;
+          }
+        }
+      }
+    }
+
+    .phone-details {
+      width: 70%;
+      margin: 60px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 5px $black;
+      background-color: $light-blue;
+      padding: 40px 50px;
+      @include grid();
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      .discount {
+        left: -3%;
+        top: -3%;
+      }
+      img {
+        width: 500px;
+      }
+      .info {
+        @include flexcol();
+        h3 {
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+        .specValue {
+          color: $blue;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .form-div {
+      width: 100%;
+      height: 100%;
+      @include flexbox();
+      justify-content: center;
+      margin: 100px 0;
+      .form-template {
+        background-color: $light-blue;
+        padding: 40px;
+        border-radius: 10px;
+        width: 45%;
+        @include flexcol();
+        h2 {
+          margin-bottom: 30px;
+        }
+        .form-field {
+          @include flexcol();
+          justify-content: center;
+          align-items: flex-start;
+          width: 100%;
+          position: relative;
+          margin: 25px 0;
+          input {
+            padding: 8px 30px;
+            border-radius: 20px;
+            width: 100%;
+            color: $blue;
+            // &:focus + label {
+            //   top: -50px;
+            // }
+            &:focus {
+              background-color: $blue;
+              color: $white;
+            }
+            @include transition(0.3s);
+            &[type="submit"]:hover {
+              background-color: $blue;
+              color: $white;
+            }
+          }
+          label {
+            margin-left: 30px;
+            @include transition(0.3s);
+            position: absolute;
+            pointer-events: none;
+            color: $blue;
+            &.go-up {
+              color: $white;
+              transform: translateY(-120%);
+            }
+          }
+          p {
+            a {
+              font-size: 1.2rem;
+              color: greenyellow;
+              @include transition(0.3s);
+              &:hover {
+                color: $white;
+              }
+            }
+          }
+        }
+        .text-field-error {
+          margin: 10px 0;
+          background-color: $red;
+          width: 100%;
+          border-radius: 20px;
+          padding: 10px 20px;
+          font-size: 1.1rem;
+          color: $black;
+          p {
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    .table-div {
+      background-color: $black;
+      margin: 100px auto;
+      padding: 50px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px $black;
+      flex-direction: column;
+      hr.line {
+        width: 15%;
+      }
+      h2 {
+        font-size: 2.3rem;
+        margin: 0;
+      }
+      .basic {
+        font-size: 1.4rem;
+      }
+      .content {
+        width: 100%;
+        @include flexcol();
+      }
+      input {
+        background-color: $white;
+        padding: 5px 10px;
+        width: 30%;
+        color: $black;
+        font-size: 1rem;
+        border-radius: 3px;
+      }
+      table {
+        margin: 40px 0;
+        width: 100%;
+        border: 2px solid $white;
+        border-radius: 5px;
+        td,
+        th {
+          font-size: 1.1rem;
+          padding: 8px 14px;
+          text-align: center;
+        }
+        tbody {
+          tr {
+            border: 1px solid $white;
+            &:nth-of-type(odd) {
+              background-color: $blue;
+            }
+          }
+          img {
+            width: 100px;
+          }
+          button {
+            font-size: 1.2rem;
+            &:hover {
+              background-color: $light-blue;
+            }
+          }
+        }
+      }
+      &.generic-table-div {
+        .basic {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 40px 0;
+    background-color: $black;
+    color: $white;
+    width: 100%;
+    @include flexbox();
+    justify-content: center;
+    .wrapper {
+      @include flexcol();
+      .row {
+        width: 100%;
+        margin: 40px 0;
+        &.first {
+          @include grid();
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        align-items: stretch;
+
+        .col {
+          height: 100%;
+          @include flexcol();
+          justify-content: stretch;
+          &.logo {
+            justify-content: center;
+          }
+          img {
+            width: 100px;
+
+            margin-bottom: 15px;
+          }
+          nav {
+            ul {
+              li {
+                margin: 10px 0;
+                a {
+                  i {
+                    font-size: 1.7rem;
+                  }
+                  font-size: 1.4rem;
+                  @include transition(0.3s);
+                  &:hover {
+                    color: $light-blue;
+                  }
+                }
+              }
+            }
+          }
+          hr.line {
+            border: none;
+            background-color: $light-blue;
+          }
+          h5 {
+            font-size: 1.7rem;
+            color: $light-blue;
+          }
+        }
+        .copy {
+          h4 {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  .popup {
+    position: fixed;
+    right: 4%;
+    top: 4%;
+    @include flexbox();
+    justify-content: center;
+    display: none;
+    z-index: 1000;
+    &.visible {
+      display: flex;
+    }
+    .content {
+      position: relative;
+      @include flexbox();
+      justify-content: center;
+      padding: 25px 60px 25px 40px;
+      min-width: 500px;
+      background-color: $light-blue;
+      border-radius: 10px;
+      opacity: 1;
+      &.success {
+        background-color: $green;
+      }
+      &.error {
+        background-color: $red;
+      }
+      h4 {
+        font-size: 1.2rem;
+        margin: 0;
+        text-align: center;
+      }
+      button {
+        position: absolute;
+        right: 2%;
+        background-color: $white;
+        color: $light-blue;
+        font-size: 1.1rem;
+        width: 24px;
+        height: 24px;
+        @include flexbox();
+        justify-content: center;
+        border-radius: 50%;
+        @include transition(0.3s);
+        padding: 0;
+        &:hover {
+          background-color: $blue;
+          color: $white;
+        }
+      }
+    }
+  }
+}

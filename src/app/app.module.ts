@@ -6,20 +6,32 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { PhonesModule } from './phones/phones.module';
 import { HomeModule } from './home/home.module';
-import { HeaderComponent } from './fixed/header/header.component';
-import { FooterComponent } from './fixed/footer/footer.component';
 import { FixedModule } from './fixed/fixed.module';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { GenericsModule } from './generics/generics.module';
+import { AuthorizationModule } from './authorization/authorization.module';
+import { AdminModule } from './admin/admin.module';
+import { BannerComponent } from './shared/banner/banner.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent],
+  declarations: [AppComponent, ContactComponent, NotFoundComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     PhonesModule,
     HomeModule,
     FixedModule,
     RouterModule,
+    NgbModule,
+    HttpClientModule,
+    GenericsModule,
+    AuthorizationModule,
+    AdminModule,
+    SharedModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

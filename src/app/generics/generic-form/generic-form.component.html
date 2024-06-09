@@ -1,0 +1,31 @@
+<div class="form-div">
+  <form class="form-template" [formGroup]="form" (ngSubmit)="onFormSubmit()">
+    <h2>{{ title }}</h2>
+    <ng-container *ngFor="let field of fields">
+      <!-- TEXT FIELD -->
+      <ng-container *ngIf="field.controlType == 'text'">
+        <phone-pulse-text-field
+          class="w-100"
+          [field]="field"
+          [control]="getFormControl(field)"
+        ></phone-pulse-text-field>
+      </ng-container>
+
+      <!-- Submit button -->
+      <ng-container *ngIf="field.controlType == 'submit'">
+        <div class="form-field">
+          <input
+            type="submit"
+            [disabled]="form.invalid"
+            [value]="field.value ? field.value : 'Send data'"
+            [name]="field.name"
+            [id]="field.id"
+          />
+        </div>
+      </ng-container>
+    </ng-container>
+    <div class="text-field-error" *ngIf="form.hasError('passwordMatching')">
+      Password are not the same
+    </div>
+  </form>
+</div>

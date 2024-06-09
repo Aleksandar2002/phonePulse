@@ -1,0 +1,39 @@
+<div class="login">
+  <phone-pulse-generic-form
+    [fields]="formFields"
+    [title]="'Login form'"
+    (formSubmitEmitter)="login($event)"
+  ></phone-pulse-generic-form>
+</div>
+
+<!-- <div class="form-div">
+  <form class="form-template" [formGroup]="form" (ngSubmit)="onFormSubmit()">
+    <h2>Login form</h2>
+    <div class="form-field">
+      <input
+        id="username"
+        name="username"
+        type="text"
+        [formControlName]="'username'"
+      />
+      <label for="username">Username</label>
+      <div
+        class="alert alert-danger"
+        *ngIf="form.get('username')?.touched && form.get('username')?.invalid"
+      >
+        Username is invalid
+      </div>
+      {{ form.value | json }}
+    </div>
+    <div class="form-field">
+      <input id="password" name="password" type="text" />
+      <label for="password">Password</label>
+    </div>
+    <div class="form-field">
+      <input name="loginBtn" value="Login" type="submit" />
+    </div>
+    <div class="form-field align-items-center">
+      <p>Don't have account? Create one <a href="'/register'">Here</a></p>
+    </div>
+  </form>
+</div> -->

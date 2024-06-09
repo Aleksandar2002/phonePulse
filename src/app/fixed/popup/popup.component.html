@@ -1,0 +1,10 @@
+@if(popupObj){
+<div class="popup" [ngClass]="popupObj.isVisible ? 'visible' : ''">
+  <div class="content" [ngClass]="popupObj.popupClass">
+    <h4>{{ popupObj.message }}</h4>
+
+    <button (click)="hidePopup()"><i class="zmdi zmdi-close"></i></button>
+  </div>
+</div>
+
+}

@@ -1,0 +1,8 @@
+<div class="register">
+  <phone-pulse-generic-form
+    [fields]="formFields"
+    [title]="'Registration form'"
+    [formValidator]="passwordsValidator"
+    (formSubmitEmitter)="handleFormSubmit($event)"
+  ></phone-pulse-generic-form>
+</div>

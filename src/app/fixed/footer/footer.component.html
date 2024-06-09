@@ -1,1 +1,51 @@
-<p>footer works!</p>
+<footer>
+  <div class="wrapper">
+    <div class="row first">
+      <div class="col logo">
+        <a [routerLink]="'/'">
+          <img [src]="'assets/images/logo.ico'" alt="logo"
+        /></a>
+        <h2>Phone pulse</h2>
+      </div>
+      <div class="col">
+        <h5>Socials</h5>
+        <hr class="line" />
+        <nav>
+          <ul>
+            <li>
+              <a href="http://youtube.com"
+                ><i class="zmdi zmdi-youtube-play"></i>
+              </a>
+            </li>
+            <li>
+              <a href="http://linkedin.com"
+                ><i class="zmdi zmdi-linkedin"></i>
+              </a>
+            </li>
+            <li>
+              <a href="http://instagram.com"
+                ><i class="zmdi zmdi-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="http://twitter.com"
+                ><i class="zmdi zmdi-twitter"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col">
+        <h5>Navigation links</h5>
+        <hr class="line" />
+        <phone-pulse-navigation></phone-pulse-navigation>
+      </div>
+    </div>
+    <hr class="line" />
+    <div class="row">
+      <div class="col copy">
+        <h4>Copyright &copy; PhonePulse2024</h4>
+      </div>
+    </div>
+  </div>
+</footer>

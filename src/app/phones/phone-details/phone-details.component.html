@@ -1,0 +1,22 @@
+<div *ngIf="phone" class="phone-details">
+  <img [src]="'assets/images/phones/' + phone.image + '.png'" alt="" />
+  <div class="info">
+    <div class="aligner">
+      <h1>{{ phone.name }}</h1>
+      <h2>${{ phone.price }}</h2>
+      <hr class="line" />
+      <h3>Specification:</h3>
+      <ul>
+        <li *ngFor="let spec of phone.specification | keyvalue">
+          <h5>
+            {{ spec.key }}: <span class="specValue">{{ spec.value }}</span>
+          </h5>
+        </li>
+      </ul>
+      <hr class="line" />
+      <h4>Model: {{ phone.model }}</h4>
+      <h4>Manufacturer: {{ phone.manufacturer.name }}</h4>
+    </div>
+    <phone-pulse-discount [discount]="phone.discount"></phone-pulse-discount>
+  </div>
+</div>
