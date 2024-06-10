@@ -335,29 +335,6 @@
       "cart": []
     },
     {
-      "id": "a972",
-      "username": "aleksandar",
-      "email": "aleksandar@gmail.com",
-      "password": "15102002aA",
-      "role": "user",
-      "cart": [],
-      "orders": [
-        {
-          "orderDate": "6/6/2024, 2:51:11 PM",
-          "items": [
-            {
-              "quantity": 1,
-              "phoneId": "6"
-            },
-            {
-              "quantity": 1,
-              "phoneId": "7"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "7a8d",
       "username": "user123",
       "email": "user@gmail.com",
@@ -366,11 +343,30 @@
       "cart": [
         {
           "phoneId": "6",
-          "quantity": 15
-        },
-        {
-          "phoneId": "9",
           "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": "c47f",
+      "username": "pera123",
+      "email": "pera@gmail.com",
+      "password": "pera123P",
+      "role": "user",
+      "cart": [],
+      "orders": [
+        {
+          "orderDate": "6/10/2024, 7:57:40 PM",
+          "items": [
+            {
+              "quantity": 5,
+              "phoneId": "6"
+            },
+            {
+              "quantity": 4,
+              "phoneId": "7"
+            }
+          ]
         }
       ]
     }

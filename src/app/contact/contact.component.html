@@ -1,5 +1,8 @@
-<phone-pulse-banner
+<div class="contact">
+  <phone-pulse-banner
   title="Contact page"
   text="If you have any feedback, feel free to inform our stuff"
   image="assets/images/banner1.jpg"
 ></phone-pulse-banner>
+<phone-pulse-generic-form [fields]="fields" [title]="'Contact form'" (formSubmitEmitter)="handleContactSubmit($event)"></phone-pulse-generic-form>
+</div>

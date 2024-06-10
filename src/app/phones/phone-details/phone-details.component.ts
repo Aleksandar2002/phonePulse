@@ -46,4 +46,12 @@ export class PhoneDetailsComponent implements OnInit, OnDestroy {
         })
     );
   }
+
+  getImagePath(image: string): string {
+    if (image.substring(0, 4) == 'http') {
+      return image;
+    }
+    return `assets/images/phones/${image}.png`;
+  }
+
 }
