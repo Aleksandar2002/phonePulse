@@ -16,9 +16,10 @@ import { AuthorizationModule } from './authorization/authorization.module';
 import { AdminModule } from './admin/admin.module';
 import { BannerComponent } from './shared/banner/banner.component';
 import { SharedModule } from './shared/shared.module';
+import { AuthorComponent } from './author/author.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent, NotFoundComponent],
+  declarations: [AppComponent, ContactComponent, NotFoundComponent, AuthorComponent],
   imports: [
     BrowserModule,
     PhonesModule,

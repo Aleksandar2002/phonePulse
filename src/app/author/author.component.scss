@@ -1,0 +1,27 @@
+div.author{
+    width: 100%;
+    img{
+        width: 200px;
+        border-radius: 10px;
+    }
+    .row{
+        margin:100px auto;
+        background-color: #212d40;
+        padding: 50px;
+        border-radius: 10px;
+        .col{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h2{
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        p{
+            font-size: 1.1rem;
+            line-height: 1.7rem;
+        }
+    }
+}
