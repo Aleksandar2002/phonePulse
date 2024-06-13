@@ -9,11 +9,13 @@ ng serve
 Start json-server
 
 npm install json-server
+
 npx json-server --watch db.json
 
 Ili
 
 npm install -g json-server ( for global install )
+
 json-server --watch db.json
 
 ---------------
