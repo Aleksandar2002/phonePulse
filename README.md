@@ -14,3 +14,8 @@ json-server --watch db.json
 install json server
 
 npm install json-server
+
+---------------
+More info on: 
+
+https://www.npmjs.com/package/json-server
