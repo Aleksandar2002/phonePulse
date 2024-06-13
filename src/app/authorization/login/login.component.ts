@@ -84,25 +84,4 @@ export class LoginComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
-
-  // constructor(private fb: FormBuilder) {}
-
-  // form!: FormGroup;
-
-  // ngOnInit(): void {
-  //   this.form = this.fb.group({
-  //     username: ['', [Validators.required, Validators.pattern(/^[\w\S]{6,}$/)]],
-  //     password: [
-  //       '',
-  //       [
-  //         Validators.required,
-  //         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/),
-  //       ],
-  //     ],
-  //   });
-  // }
-
-  // onFormSubmit() {
-  //   console.log(this.form.value);
-  // }
 }

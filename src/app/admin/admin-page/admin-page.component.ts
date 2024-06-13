@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IPhone } from '../../interfaces/IPhone';
 import { PhonesService } from '../../services/phones.service';
 import { IPhoneDataForTable } from './IPhoneDataForTable';
 import { AdminPhonesService } from '../../services/admin/phones.service';
 import { PopupControlService } from '../../services/popup-control.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'phone-pulse-admin-page',
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.scss',
 })
-export class AdminPageComponent implements OnInit {
+export class AdminPageComponent implements OnInit, OnDestroy {
   constructor(
     private phoneService: PhonesService,
     private adminPhonesService: AdminPhonesService,
@@ -35,17 +36,20 @@ export class AdminPageComponent implements OnInit {
   ];
 
   phones!: IPhoneDataForTable[];
+  subscriptions: Subscription[] = [];
 
   ngOnInit(): void {
     this.getPhonesForTable();
   }
 
   getPhonesForTable(): void {
-    this.phoneService.getPhones().subscribe((data: IPhone[]) => {
-      if (data && data.length) {
-        this.mapToTableData(data);
-      }
-    });
+    this.subscriptions.push(
+      this.phoneService.getPhones().subscribe((data: IPhone[]) => {
+        if (data && data.length) {
+          this.mapToTableData(data);
+        }
+      })
+    );
   }
 
   mapToTableData(data: IPhone[]): void {
@@ -64,9 +68,15 @@ export class AdminPageComponent implements OnInit {
   }
 
   deleteData(id: string) {
-    this.adminPhonesService.deletePhone(id).subscribe(() => {
-      this.getPhonesForTable();
-      this.popupService.show('Phone is deleted successfully', 'success');
-    });
+    this.subscriptions.push(
+      this.adminPhonesService.deletePhone(id).subscribe(() => {
+        this.getPhonesForTable();
+        this.popupService.show('Phone is deleted successfully', 'success');
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((u) => u.unsubscribe());
   }
 }

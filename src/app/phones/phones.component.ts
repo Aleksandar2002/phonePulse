@@ -14,7 +14,6 @@ import { Subscription } from 'rxjs';
 })
 export class PhonesComponent implements OnInit, OnDestroy {
   phones: IPhone[] = [];
-  // loggedUser: IUser | null = null;
   getPhonesParams: IPhonesQueryParams | null = null;
   subscriptions: Subscription[] = [];
 
@@ -22,13 +21,6 @@ export class PhonesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getPhones();
-
-    // this.subscriptions.push(
-    //   this.authService.loggedUserSubject.subscribe((user: IUser | null) => {
-    //     this.loggedUser = user;
-    //     console.log(this.loggedUser);
-    //   })
-    // );
   }
   ngOnDestroy(): void {
     this.subscriptions.forEach((s) => s.unsubscribe());
@@ -52,8 +44,4 @@ export class PhonesComponent implements OnInit, OnDestroy {
     this.getPhonesParams = { ...this.getPhonesParams, ...queryParamsObj };
     this.getPhones();
   }
-
-  // transferDataToIPhoneInterface(phones: IPhone[]) {
-  //   console.log(phones.map((phone) => phone.manufacturer));
-  // }
 }

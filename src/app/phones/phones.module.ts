@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { PhoneDetailsComponent } from './phone-details/phone-details.component';
 import { DiscountComponent } from './discount/discount.component';
 import { CartModule } from '../cart/cart.module';
+import { PhonesRoutingModule } from './phonse-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { CartModule } from '../cart/cart.module';
     PhoneDetailsComponent,
     DiscountComponent,
   ],
-  imports: [FormsModule, CommonModule, CartModule],
+  imports: [FormsModule, CommonModule, CartModule, PhonesRoutingModule],
 })
 export class PhonesModule {}

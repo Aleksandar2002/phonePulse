@@ -36,8 +36,6 @@ export class HeaderComponent implements OnInit {
     let splittedUrl = this.router.url.split('/');
     let currentPage = splittedUrl[splittedUrl.length - 1];
 
-    console.log(currentPage);
-
     if (onlyAuthorizedCanAccess.includes(currentPage)) {
       this.router.navigate(['/phones']);
     }

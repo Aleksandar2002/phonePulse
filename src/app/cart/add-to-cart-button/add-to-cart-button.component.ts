@@ -25,23 +25,23 @@ export class AddToCartButtonComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   addToCart(phoneId: string) {
-    this.userService.getUserCart().subscribe((data: ICartItem[] | null) => {
-      // this.popupService.hide();
+    this.subscriptions.push(   
+        this.userService.getUserCart().subscribe((data: ICartItem[] | null) => {
 
-      if (data == null) {
-        return;
-      }
-
-      if (data.find((x) => x.phoneId == phoneId)) {
-        this.popupService.show('Phone is already in the cart', 'error');
-        return;
-      }
-
-      let cart = { cart: [...data, { phoneId: phoneId, quantity: 1 }] };
-      this.cartService.addPhoneToCart(cart).subscribe(() => {
-        this.popupService.show('Phone is added to the cart', 'success');
-      });
-    });
+        if (data == null) {
+          return;
+        }
+  
+        if (data.find((x) => x.phoneId == phoneId)) {
+          this.popupService.show('Phone is already in the cart', 'error');
+          return;
+        }
+  
+        let cart = { cart: [...data, { phoneId: phoneId, quantity: 1 }] };
+        this.subscriptions.push(this.cartService.addPhoneToCart(cart).subscribe(() => {
+          this.popupService.show('Phone is added to the cart', 'success');
+        }));
+      }));
   }
 
   ngOnInit(): void {

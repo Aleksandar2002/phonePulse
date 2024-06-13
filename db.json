@@ -340,10 +340,16 @@
       "email": "user@gmail.com",
       "password": "user123U",
       "role": "user",
-      "cart": [
+      "cart": [],
+      "orders": [
         {
-          "phoneId": "6",
-          "quantity": 5
+          "orderDate": "6/13/2024, 9:54:39 AM",
+          "items": [
+            {
+              "quantity": 8,
+              "phoneId": "6"
+            }
+          ]
         }
       ]
     },

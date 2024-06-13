@@ -1,68 +1,68 @@
 import {
-  ChangeDetectorRef,
   Component,
-  ElementRef,
+  OnDestroy,
   OnInit,
-  QueryList,
-  ViewChildren,
 } from '@angular/core';
 import { ICartItem, IPhoneInCart } from '../interfaces/ICartItem';
 import { CartService } from '../services/cart.service';
 import { AuthorizationService } from '../services/authorization.service';
 import { IUser } from '../interfaces/UserInterface';
-import { IPhone } from '../interfaces/IPhone';
 import { PhonesService } from '../services/phones.service';
 import { PopupControlService } from '../services/popup-control.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'phone-pulse-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit ,OnDestroy {
   constructor(
     private cartService: CartService,
     private authService: AuthorizationService,
     private phoneService: PhonesService,
     private popupService: PopupControlService,
-    private cdr: ChangeDetectorRef
   ) {}
 
   phonesInCart!: IPhoneInCart[];
+  subscriptions: Subscription[] = [];
 
   ngOnInit(): void {
     if (this.authService.LoggedUser) {
       this.getAllUserCartItems(this.authService.LoggedUser.id);
     }
 
-    this.authService.loggedUserSubject.subscribe((user: IUser | null) => {
-      if (user == null) {
-        return;
-      }
-      this.getAllUserCartItems(user.id);
-    });
+    this.subscriptions.push(
+        this.authService.loggedUserSubject.subscribe((user: IUser | null) => {
+            if (user == null) {
+              return;
+            }
+            this.getAllUserCartItems(user.id);
+          })
+    );
   }
 
   getAllUserCartItems(userId: string): void {
-    this.cartService
-      .getUserCartItems()
-      .subscribe((userCartItems: ICartItem[] | null) => {
-        if (userCartItems && userCartItems.length) {
-          this.transferArrayOfProductIdsToProductsArray(userCartItems);
-        }
-      });
+    this.subscriptions.push(    
+        this.cartService
+        .getUserCartItems()
+        .subscribe((userCartItems: ICartItem[] | null) => {
+          if (userCartItems && userCartItems.length) {
+            this.transferArrayOfProductIdsToProductsArray(userCartItems);
+          }
+        }));
   }
 
   transferArrayOfProductIdsToProductsArray(userCartItems: ICartItem[]) {
-    // let ids: string[] = userCartItems.map((item: ICartItem) => item.phoneId);
-
-    this.phoneService
-      .transferArrayOfIdsToPhoneObjectsArray(userCartItems)
-      .subscribe((data: IPhoneInCart[] | null) => {
-        if (data) {
-          this.phonesInCart = data;
-        }
-      });
+    this.subscriptions.push(
+        this.phoneService
+        .transferArrayOfIdsToPhoneObjectsArray(userCartItems)
+        .subscribe((data: IPhoneInCart[] | null) => {
+          if (data) {
+            this.phonesInCart = data;
+          }
+        })
+    );
   }
 
   removeFromCart(phoneId: string): void {
@@ -71,9 +71,10 @@ export class CartComponent implements OnInit {
     });
 
     let cartItems = this.mapPhonesInCartToCartItemsArray(phoneId);
-    this.cartService.removeFromCart({ cart: cartItems }).subscribe(() => {
-      this.popupService.show('Phone is removed from cart', 'success');
-    });
+    this.subscriptions.push(    
+      this.cartService.removeFromCart({ cart: cartItems }).subscribe(() => {
+          this.popupService.show('Phone is removed from cart', 'success');
+      }));
   }
 
   changeQuantity(quantity: string, phoneId: string): void {
@@ -91,9 +92,10 @@ export class CartComponent implements OnInit {
 
     this.changeQuantityForPhonesInCart(cartItems);
 
-    this.cartService.changeQuantity({ cart: cartItems }).subscribe(() => {
-      this.popupService.show('Quantity is changed', 'success');
-    });
+    this.subscriptions.push(    
+      this.cartService.changeQuantity({ cart: cartItems }).subscribe(() => {
+          this.popupService.show('Quantity is changed', 'success');
+      }));
   }
 
   mapPhonesInCartToCartItemsArray(phoneId: string, quantityInt: number = 0) {
@@ -110,16 +112,6 @@ export class CartComponent implements OnInit {
   }
 
   changeQuantityForPhonesInCart(cartItems: ICartItem[]): void {
-    // this.phonesInCart = this.phonesInCart.map((phone) => {
-    //   let cartItem = cartItems.find((x) => x.phoneId == phone.id);
-    //   if (cartItem)
-    //     return {
-    //       ...phone,
-    //       quantity: cartItem.quantity,
-    //     } as IPhoneInCart;
-    //   return phone;
-    // });
-
     this.phonesInCart.forEach((phone) => {
       let cartItem = cartItems.find((x) => x.phoneId == phone.id);
       if (cartItem) {
@@ -149,12 +141,15 @@ export class CartComponent implements OnInit {
   }
 
   buyPhones() {
-    this.makeOrder().subscribe(() => {
-      this.clearCart().subscribe(() => {
-        this.phonesInCart = [];
-        this.popupService.show('Your order has been made', 'success');
-      });
-    });
+    this.subscriptions.push(    
+        this.makeOrder().subscribe(() => {
+            this.subscriptions.push(
+                this.clearCart().subscribe(() => {
+                    this.phonesInCart = [];
+                    this.popupService.show('Your order has been made', 'success');
+                })
+            );
+      }));
     this.clearCart();
   }
 
@@ -177,5 +172,9 @@ export class CartComponent implements OnInit {
 
   clearCart() {
     return this.cartService.clearCart();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((u) => u.unsubscribe());
   }
 }

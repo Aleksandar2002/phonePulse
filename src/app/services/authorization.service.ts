@@ -16,8 +16,6 @@ export class AuthorizationService {
   loggedUserSubject: Subject<null | IUser> = new Subject<null | IUser>();
 
   setUserFromLocalStorage() {
-    console.log('authservice');
-
     setTimeout(() => {
       let userFromStorage = JSON.parse(
         localStorage.getItem('LOGGED_USER') as string
